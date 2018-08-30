@@ -32,7 +32,7 @@
         <div class="form__content">
             <h1>Authorization</h1>
             <div class="styled-input">
-                <input type="text" class="styled-input__input" name="user_id" id="user_id" autocomplete="off" >
+                <input type="text" class="styled-input__input" name="userId" id="user_id" autocomplete="off" >
                 <div class="styled-input__placeholder">
                     <span class="styled-input__placeholder-text">username</span>
                 </div>
@@ -40,13 +40,13 @@
             </div>
 
             <div class="styled-input">
-                <input type="password" class="styled-input__input" id="user_password" name="user_password" autocomplete="off" >
+                <input type="password" class="styled-input__input" id="user_password" name="userPassword" autocomplete="off" >
                 <div class="styled-input__placeholder">
                     <span class="styled-input__placeholder-text">password</span>
                 </div>
                 <div class="styled-input__circle"></div>
             </div>
-            <button type="button" class="styled-button" onclick="checkUser();">
+            <button id="login_button" type="button" class="styled-button" onclick="checkUser();">
                     <span class="styled-button__real-text-holder">
                         <span class="styled-button__real-text">Submit</span>
                         <span class="styled-button__moving-block face">
@@ -79,6 +79,7 @@
         else{document.getElementById("login_form").submit();
         }
     }
+
 </script>
 
 </body>

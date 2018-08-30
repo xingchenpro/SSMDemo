@@ -15,6 +15,6 @@ public interface UserDao {
      * @param userId
      * @return
      */
-    public User getByUserId(String userId);
+    public User getUserById(String userId);
 
 }

@@ -4,6 +4,7 @@ import com.hly.dao.UserDao;
 import com.hly.entity.User;
 import com.hly.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author :hly
@@ -11,15 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @blog :blog.csdn.net/Sirius_hly
  * @date :2018/8/30
  */
+@Service(value = "UserService")
 public class UserServiceImpl implements UserService {
 
-
     @Autowired
-    UserDao userDao;
-
+    public UserDao userDao;
 
     @Override
     public User getUserById(String userId) {
-        return userDao.getByUserId(userId);
+        return userDao.getUserById(userId);
     }
 }

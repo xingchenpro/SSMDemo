@@ -1,8 +1,5 @@
 package com.hly.service;
-
-import com.hly.dao.UserDao;
 import com.hly.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author :hly
@@ -10,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @blog :blog.csdn.net/Sirius_hly
  * @date :2018/8/30
  */
+
 public interface UserService {
 
     /**

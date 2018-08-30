@@ -1,11 +1,18 @@
 package com.hly.realm;
 
+import com.hly.entity.User;
+import com.hly.service.UserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.xml.ws.Action;
 
 /**
  * @author :hly
@@ -15,6 +22,9 @@ import org.apache.shiro.subject.PrincipalCollection;
  */
 public class MyRealm extends AuthorizingRealm {
 
+    @Autowired
+    UserService userService;
+
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
@@ -23,6 +33,16 @@ public class MyRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        return null;
+        String userId = (String) authenticationToken.getPrincipal();
+        User user = userService.getUserById(userId);
+        if (user != null) {
+            //保存当前用户到session
+            SecurityUtils.getSubject().getSession().setAttribute("currentUser", user);
+            AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserId(), user.getUserPassword(), "realmName");
+            return authenticationInfo;
+        } else {
+            return null;
+        }
+
     }
 }

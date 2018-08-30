@@ -43,7 +43,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描mappers.xml文件 -->
-        <property name="mapperLocations" value="classpath:com/hly/mappers/"></property>
+        <property name="mapperLocations" value="classpath:com/hly/mappers/*.xml"></property>
         <!-- mybatis配置文件 -->
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
     </bean>
@@ -79,7 +79,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /login=anon
-                /admin/**=authc
+                /index=authc
             </value>
         </property>
     </bean>
@@ -92,6 +92,7 @@
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
     </bean>
+
 
 
 </beans>

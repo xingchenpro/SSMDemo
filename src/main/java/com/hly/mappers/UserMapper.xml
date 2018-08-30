@@ -8,8 +8,8 @@
         <result property="userPassword" column="user_password"/>
     </resultMap>
 
-    <select id="getByUserId" parameterType="String" resultMap="UserResult">
-        SELECT * FROM  [user] WHERE user_id = #{userId}
+    <select id="getUserById" parameterType="string" resultMap="UserResult">
+        SELECT * FROM  userInfo WHERE user_id = #{userId}
     </select>
 
 

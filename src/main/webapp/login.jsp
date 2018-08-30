@@ -14,14 +14,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>华丽的HTML5/CSS3输入框聚焦发光动画表单DEMO演示</title>
-
-
+    <title>login</title>
     <link rel="stylesheet" href="static/css/login.css">
-
-
 </head>
-
 <body>
 <main>
     <form class="form" id="login_form" method="post" action="/login">
@@ -37,20 +32,21 @@
         <div class="form__content">
             <h1>Authorization</h1>
             <div class="styled-input">
-                <input type="text" class="styled-input__input" name="user_id" id="user_id">
+                <input type="text" class="styled-input__input" name="user_id" id="user_id" autocomplete="off" >
                 <div class="styled-input__placeholder">
                     <span class="styled-input__placeholder-text">username</span>
                 </div>
                 <div class="styled-input__circle"></div>
             </div>
+
             <div class="styled-input">
-                <input type="password" class="styled-input__input" id="user_password" name="user_password">
+                <input type="password" class="styled-input__input" id="user_password" name="user_password" autocomplete="off" >
                 <div class="styled-input__placeholder">
                     <span class="styled-input__placeholder-text">password</span>
                 </div>
                 <div class="styled-input__circle"></div>
             </div>
-            <button type="button" class="styled-button" onclick="checkUser()">
+            <button type="button" class="styled-button" onclick="checkUser();">
                     <span class="styled-button__real-text-holder">
                         <span class="styled-button__real-text">Submit</span>
                         <span class="styled-button__moving-block face">
@@ -65,16 +61,14 @@
                     </span>
             </button>
         </div>
-
     </form>
 </main>
-
 <script src="static/js/login.js"></script>
 <script>
     function checkUser() {
-        var user_id = document.getElementById("user_id");
-        var user_password = document.getElementById("user_password");
-        if(user_id==""){
+        var user_id = document.getElementById("user_id").value;
+        var user_password = document.getElementById("user_password").value;
+        if(user_id ==""){
             alert("请输入账号");
             return false;
         }
@@ -82,8 +76,8 @@
             alert("请输入用户名");
             return false;
         }
-        document.getElementById("login_form").submit();
-
+        else{document.getElementById("login_form").submit();
+        }
     }
 </script>
 

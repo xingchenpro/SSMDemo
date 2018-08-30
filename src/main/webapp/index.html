@@ -62,9 +62,8 @@
 <script src="static/js/login.js"></script>
 <script>
     function checkUser() {
-        var user_id = document.getElementById("user_id");
-        var user_password = document.getElementById("user_password");
-        alert(user_id);
+        var user_id = document.getElementById("user_id").value;
+        var user_password = document.getElementById("user_password").value;
         if(user_id ==""){
             alert("请输入账号");
             return false;

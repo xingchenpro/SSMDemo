@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hly.dao.UserDao">
+
+
+    <resultMap id="UserResult" type="User">
+        <result property="userId" column="user_id"/>
+        <result property="userPassword" column="user_password"/>
+    </resultMap>
+
+    <select id="getByUserId" parameterType="String" resultMap="UserResult">
+        SELECT * FROM  [user] WHERE user_id = #{userId}
+    </select>
+
+
+
+
+
+</mapper>

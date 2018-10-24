@@ -35,6 +35,7 @@ public class UserController {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUserId(), CryptographyUtil.md5(user.getUserPassword(),user.getUserId()));
         try {
+            System.err.println(user.toString());
             subject.login(token);
             return "index";
         } catch (AuthenticationException e) {

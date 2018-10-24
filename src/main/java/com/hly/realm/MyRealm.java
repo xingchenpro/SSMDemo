@@ -21,11 +21,8 @@ import javax.xml.ws.Action;
  * @date :2018/8/29
  */
 public class MyRealm extends AuthorizingRealm {
-
     @Autowired
     UserService userService;
-
-
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
@@ -35,10 +32,12 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String userId = (String) authenticationToken.getPrincipal();
         User user = userService.getUserById(userId);
+        System.err.println(user.toString());
         if (user != null) {
             //保存当前用户到session
             SecurityUtils.getSubject().getSession().setAttribute("currentUser", user);
             AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUserId(), user.getUserPassword(), "realmName");
+            System.err.println(user.toString());
             return authenticationInfo;
         } else {
             return null;
